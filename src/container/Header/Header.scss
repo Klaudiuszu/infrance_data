@@ -1,0 +1,67 @@
+.app__Header {
+    flex: 1 1;
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    position: relative;
+    background-color: var(--font-orange-lighter);
+
+    form {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    input {
+        height: 2rem;
+        width: 20rem;
+
+        border: none;
+        border-radius: .5rem;
+    }
+
+    .main-button {
+
+        width: 8rem;
+        height: 2rem;
+    
+        text-transform: uppercase;
+        letter-spacing: .1rem;
+        font-size: .8rem;
+        font-weight: 600;
+        border-radius: .6rem;
+    
+        cursor: pointer;
+    
+        margin-top: 2rem;
+        border: none;
+        background-color: var(--font-base-lighter);
+        color: var(--font-white-lighter);
+        transition: all .3s ease-in-out;
+
+     &:hover {
+        background-color: var(--font-red-lighter);
+     }
+    }
+
+    h1 {
+        color: var(--font-base-lighter);
+        font-weight: 600;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .app__Header-result {
+        width: 40rem;
+        height: 20rem;
+        background-color: var(--font-white-lighter);
+        margin: auto;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    }
+}
