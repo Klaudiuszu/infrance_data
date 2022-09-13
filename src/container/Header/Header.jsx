@@ -12,7 +12,29 @@ const Header = () => {
   const [data, setData] = useState([]);
   const [btnState, setBtnState] = useState(false);
 
-  const [value, handleChange] = useForm();
+  const [error, setError] = useState(null);
+
+  //const [value, handleChange] = useForm();
+
+  const [detail, setDetail] = useState({name: ""});
+  const [name, setName] = useState("");
+
+  console.log(detail)
+  
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setDetail((prev) => {
+    return { ...prev, [name]: value};
+    });
+  };
+
+console.log(data)
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+}
+
+
   
   const { t } = useTranslation();
   
@@ -27,21 +49,16 @@ const Header = () => {
 // },[]);
 
    useEffect(() => {
-      fetch(`https://api.genderize.io?name=${value.name}`)
+      fetch(`https://api.genderize.io?name=${detail.name}`)
          .then((response) => response.json())
          .then((data) => {
             console.log(data);
             setData(data);
-         })
+          })
          .catch((err) => {
             console.log(err.message);
          });
    }, []);
-  
-  const handleSubmit = event => {
-    event.preventDefault();
-    console.log(value)
-  }
 
 const addName = () => {
 
@@ -58,15 +75,15 @@ const addName = () => {
           <label>
             <h1>{t("translation_test")}</h1>
             <input 
+            type="text"
             name="name"
-            
-            value={value.name || ""}
             onChange={handleChange}
             />
           </label>
         <button 
-        className="main-button"
         onClick={addName}
+        className="main-button"
+        type="submit"
         >{t("check")}
         </button>
       </form>
@@ -75,8 +92,9 @@ const addName = () => {
       style={{ visibility: btnState ? "visible" : "hidden" }}
       >
         <div className="app__Header-wrapper">
-          <h2>{t("check-nationality")}</h2>
+          <h2>{t("translation_test")}</h2>
           <h1>{data.name}</h1>
+          <h1>{data.gender}</h1>
         </div>
       </div>
     </div>
